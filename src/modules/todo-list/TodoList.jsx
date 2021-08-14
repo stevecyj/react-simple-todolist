@@ -24,7 +24,7 @@ export function TodoList() {
   }, []);
 
   return (
-    <header className="App-header">
+    <header>
       {todos.length === 0 && <div>No Data</div>}
       <ul>
         {todos.map((todo, idx) => (
