@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 
 export function TodoList() {
-  const [todo, setTodo] = useState([]);
+  const [todos, setTodos] = useState([]);
 
   useEffect(() => {
     fetch('https://jsonplaceholder.typicode.com/todos')
@@ -15,7 +15,7 @@ export function TodoList() {
           // console.log('response data', data);
           let title = data.slice(0, 3);
           console.log(title);
-          setTodo(title);
+          setTodos(title);
         });
       })
       .catch(err => {
@@ -25,10 +25,10 @@ export function TodoList() {
 
   return (
     <header className="App-header">
-      {todo.length === 0 && <div>No Data</div>}
+      {todos.length === 0 && <div>No Data</div>}
       <ul>
-        {todo.map((titles, idx) => (
-          <li key={idx}>{titles.title}</li>
+        {todos.map((todo, idx) => (
+          <li key={idx}>{todo.title}</li>
         ))}
       </ul>
     </header>
