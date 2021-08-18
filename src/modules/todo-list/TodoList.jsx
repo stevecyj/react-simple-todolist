@@ -30,6 +30,9 @@ export function TodoList() {
   const itemsPerPage = 10;
   const [page, setPage] = useState(1);
   const [noOfPages] = useState(Math.ceil(todos.length / itemsPerPage));
+  const handleChange = (event, value) => {
+    setPage(value);
+  };
 
   const handleToggle = value => () => {
     const currentIndex = checked.indexOf(value);
@@ -66,8 +69,8 @@ export function TodoList() {
 
   return (
     <header className={classes.root}>
+      {/* {todos.length === 0 && <div>No Data</div>} */}
       <List>
-        {todos.length === 0 && <div>No Data</div>}
         {todos.map((value, idx) => {
           const labelId = `checkbox-list-label-${value}`;
 
@@ -92,13 +95,12 @@ export function TodoList() {
           );
         })}
       </List>
-      <Divider />
-      <Pagination count={10} />
 
+      <Pagination count={20} onChange={handleChange} />
       {/* {todos.length === 0 && <div>No Data</div>}
       <ul>
-        {todos.map((todo, idx) => (
-          <li key={idx}>{todo.title}</li>
+      {todos.map((todo, idx) => (
+        <li key={idx}>{todo.title}</li>
         ))}
       </ul> */}
     </header>
