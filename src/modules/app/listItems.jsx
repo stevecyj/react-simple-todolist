@@ -14,14 +14,14 @@ import { default as MaterialLink } from '@material-ui/core/Link';
 
 export const mainListItems = (
   <div>
-    <MaterialLink component={RouterLink} to="/" />
+    {/* <MaterialLink component={RouterLink} to="/" /> */}
     <ListItem button component={RouterLink} to="/">
       <ListItemIcon>
         <DashboardIcon />
       </ListItemIcon>
       <ListItemText primary="Home" />
     </ListItem>
-    <MaterialLink component={RouterLink} to="/todos" />
+    {/* <MaterialLink component={RouterLink} to="/todos" /> */}
     <ListItem button component={RouterLink} to="/todos">
       <ListItemIcon>
         <ShoppingCartIcon />
