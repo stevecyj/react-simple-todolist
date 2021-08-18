@@ -58,27 +58,30 @@ export function TodoList() {
   return (
     <header>
       <List className={classes.root}>
-        {[0, 1, 2, 3].map(value => {
+        {todos.length === 0 && <div>No Data</div>}
+        {todos.map(value => {
           const labelId = `checkbox-list-label-${value}`;
 
           return (
-            <ListItem key={value} role={undefined} dense button onClick={handleToggle(value)}>
-              <ListItemIcon>
-                <Checkbox
-                  edge="start"
-                  checked={checked.indexOf(value) !== -1}
-                  tabIndex={-1}
-                  disableRipple
-                  inputProps={{ 'aria-labelledby': labelId }}
-                />
-              </ListItemIcon>
-              <ListItemText id={labelId} primary={`Line item ${value + 1}`} />
-              <ListItemSecondaryAction>
-                <IconButton edge="end" aria-label="comments">
-                  <CommentIcon />
-                </IconButton>
-              </ListItemSecondaryAction>
-            </ListItem>
+            <div>
+              <ListItem key={value} role={undefined} dense button onClick={handleToggle(value)}>
+                <ListItemIcon>
+                  <Checkbox
+                    edge="start"
+                    checked={checked.indexOf(value) !== -1}
+                    tabIndex={-1}
+                    disableRipple
+                    inputProps={{ 'aria-labelledby': labelId }}
+                  />
+                </ListItemIcon>
+                <ListItemText id={labelId} primary={`${value.title} ${value + 1}`} />
+                <ListItemSecondaryAction>
+                  <IconButton edge="end" aria-label="comments">
+                    <CommentIcon />
+                  </IconButton>
+                </ListItemSecondaryAction>
+              </ListItem>
+            </div>
           );
         })}
       </List>
