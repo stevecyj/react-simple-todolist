@@ -2,6 +2,8 @@ import { useState, useEffect } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
+import Divider from '@material-ui/core/Divider';
+import Pagination from '@material-ui/lab/Pagination';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemSecondaryAction from '@material-ui/core/ListItemSecondaryAction';
 import ListItemText from '@material-ui/core/ListItemText';
@@ -14,6 +16,9 @@ const useStyles = makeStyles(theme => ({
     width: '100%',
     maxWidth: 360,
     backgroundColor: theme.palette.background.paper,
+    '& > *': {
+      marginTop: theme.spacing(2),
+    },
   },
 }));
 
@@ -21,6 +26,10 @@ export function TodoList() {
   const classes = useStyles();
   const [checked, setChecked] = useState([0]);
   const [todos, setTodos] = useState([]);
+  // pagi
+  const itemsPerPage = 10;
+  const [page, setPage] = useState(1);
+  const [noOfPages] = useState(Math.ceil(todos.length / itemsPerPage));
 
   const handleToggle = value => () => {
     const currentIndex = checked.indexOf(value);
@@ -83,6 +92,9 @@ export function TodoList() {
           );
         })}
       </List>
+      <Divider />
+      <Pagination count={10} />
+
       {/* {todos.length === 0 && <div>No Data</div>}
       <ul>
         {todos.map((todo, idx) => (
