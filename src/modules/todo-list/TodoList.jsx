@@ -56,8 +56,8 @@ export function TodoList() {
   }, []);
 
   return (
-    <header>
-      <List className={classes.root}>
+    <header className={classes.root}>
+      <List>
         {todos.length === 0 && <div>No Data</div>}
         {todos.map((value, idx) => {
           const labelId = `checkbox-list-label-${value}`;
