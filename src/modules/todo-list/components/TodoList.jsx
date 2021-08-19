@@ -27,10 +27,10 @@ export function TodoList() {
   const [checked, setChecked] = useState([0]);
   const [todos, setTodos] = useState([]);
   // pagi
-  // const itemsPerPage = 10;
+  const itemsPerPage = 10;
   const [page, setPage] = useState(1);
+  const [pageCounts, setPageCounts] = useState(0);
   const [pageTodos, setPageTodos] = useState([]);
-  // const [noOfPages] = useState(Math.ceil(todos.length / itemsPerPage));
   const handleChange = (event, value) => {
     setPage(value);
   };
@@ -55,22 +55,20 @@ export function TodoList() {
           console.log('Looks like there was a problem. Status Code:' + response.status);
           return;
         }
-        // Examine the text in the response
         return response.json().then(function (data) {
-          // console.log('response data', data);
           let title = data;
-          // console.log(title);
           setTodos(title);
+          setPageCounts(Math.ceil(title.length / itemsPerPage));
         });
       })
       .catch(err => {
-        console.log('Fetch Error:-S', err);
+        console.log('Fetch Error:', err);
       });
   }, []);
 
   useEffect(() => {
-    const start = 10 * (page - 1);
-    const end = 10 * page;
+    const start = itemsPerPage * (page - 1);
+    const end = itemsPerPage * page;
     setPageTodos(todos.slice(start, end));
   }, [todos, page]);
 
@@ -103,13 +101,7 @@ export function TodoList() {
         })}
       </List>
       <Divider />
-      <Pagination count={20} onChange={handleChange} />
-      {/* {todos.length === 0 && <div>No Data</div>}
-      <ul>
-      {todos.map((todo, idx) => (
-        <li key={idx}>{todo.title}</li>
-        ))}
-      </ul> */}
+      <Pagination count={pageCounts} onChange={handleChange} />
     </header>
   );
 }
