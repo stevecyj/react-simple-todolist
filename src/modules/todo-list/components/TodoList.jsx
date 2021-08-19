@@ -27,10 +27,10 @@ export function TodoList() {
   const [checked, setChecked] = useState([0]);
   const [todos, setTodos] = useState([]);
   // pagi
-  const itemsPerPage = 10;
+  // const itemsPerPage = 10;
   const [page, setPage] = useState(1);
   const [pageTodos, setPageTodos] = useState([]);
-  const [noOfPages] = useState(Math.ceil(todos.length / itemsPerPage));
+  // const [noOfPages] = useState(Math.ceil(todos.length / itemsPerPage));
   const handleChange = (event, value) => {
     setPage(value);
   };
@@ -102,7 +102,7 @@ export function TodoList() {
           );
         })}
       </List>
-
+      <Divider />
       <Pagination count={20} onChange={handleChange} />
       {/* {todos.length === 0 && <div>No Data</div>}
       <ul>
