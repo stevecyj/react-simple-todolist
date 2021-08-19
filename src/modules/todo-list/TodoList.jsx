@@ -29,6 +29,7 @@ export function TodoList() {
   // pagi
   const itemsPerPage = 10;
   const [page, setPage] = useState(1);
+  const [pageTodos, setPageTodos] = useState([]);
   const [noOfPages] = useState(Math.ceil(todos.length / itemsPerPage));
   const handleChange = (event, value) => {
     setPage(value);
@@ -67,11 +68,17 @@ export function TodoList() {
       });
   }, []);
 
+  useEffect(() => {
+    const start = 10 * (page - 1);
+    const end = 10 * page;
+    setPageTodos(todos.slice(start, end));
+  }, [todos, page]);
+
   return (
     <header className={classes.root}>
       {/* {todos.length === 0 && <div>No Data</div>} */}
       <List>
-        {todos.map((value, idx) => {
+        {pageTodos.map((value, idx) => {
           const labelId = `checkbox-list-label-${value}`;
 
           return (
