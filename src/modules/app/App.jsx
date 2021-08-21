@@ -21,6 +21,7 @@ import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 import NotificationsIcon from '@material-ui/icons/Notifications';
 import { mainListItems, secondaryListItems } from './listItems.jsx';
 import { TodoList } from '../todo-list';
+import { TicketList, Incidences } from '../ticket-list';
 import { Home } from '../home';
 
 function Copyright() {
@@ -181,8 +182,14 @@ export default function Dashboard() {
           <Container maxWidth="lg" className={classes.container}>
             <Grid container spacing={3}>
               <Switch>
+                <Route path="/incidences">
+                  <Incidences />
+                </Route>
                 <Route path="/todos">
                   <TodoList />
+                </Route>
+                <Route path="/ticket-list">
+                  <TicketList />
                 </Route>
                 <Route path="/">
                   <Home />

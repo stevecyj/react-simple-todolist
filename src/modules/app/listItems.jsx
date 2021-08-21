@@ -28,6 +28,18 @@ export const mainListItems = (
       </ListItemIcon>
       <ListItemText primary="Todos" />
     </ListItem>
+    <ListItem button component={RouterLink} to="/ticket-list">
+      <ListItemIcon>
+        <ShoppingCartIcon />
+      </ListItemIcon>
+      <ListItemText primary="TicketList" />
+    </ListItem>
+    <ListItem button component={RouterLink} to="/incidences">
+      <ListItemIcon>
+        <ShoppingCartIcon />
+      </ListItemIcon>
+      <ListItemText primary="Incidences" />
+    </ListItem>
     {/* <ListItem button>
       <ListItemIcon>
         <PeopleIcon />
