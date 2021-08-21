@@ -8,12 +8,15 @@ export const TicketList = () => {
   const stations = tickets.map(ticket => ticket['起站']);
   const uniqueStations = _.uniq(stations);
 
+  const groups = _.groupBy(tickets, '起站');
+  console.log(groups);
+
   return (
     <>
       <div>起站</div>
       <List>
-        {uniqueStations.map(station => (
-          <ListItem>
+        {uniqueStations.map((station, index) => (
+          <ListItem key={index}>
             <ListItemText primary={station} secondary={station} />
           </ListItem>
         ))}
