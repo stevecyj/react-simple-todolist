@@ -5,8 +5,8 @@ import _ from 'lodash';
 import tickets from './tickets.json';
 
 export const TicketList = () => {
-  const stations = tickets.map(ticket => ticket['起站']);
-  const uniqueStations = _.uniq(stations);
+  // const stations = tickets.map(ticket => ticket['起站']);
+  // const uniqueStations = _.uniq(stations);
 
   const groups = _.groupBy(tickets, '起站');
   console.log(groups);
@@ -15,9 +15,12 @@ export const TicketList = () => {
     <>
       <div>起站</div>
       <List>
-        {uniqueStations.map((station, index) => (
-          <ListItem key={index}>
-            <ListItemText primary={station} secondary={station} />
+        {Object.entries(groups).map(([station, destinations]) => (
+          <ListItem key={station}>
+            <ListItemText
+              primary={station}
+              secondary={destinations.map(d => d['訖站']).join(', ')}
+            />
           </ListItem>
         ))}
       </List>
