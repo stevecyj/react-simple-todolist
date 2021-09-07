@@ -15,6 +15,12 @@ import { Link as RouterLink } from 'react-router-dom';
 export const mainListItems = (
   <div>
     {/* <MaterialLink component={RouterLink} to="/" /> */}
+    <ListItem button component={RouterLink} to="/login">
+      <ListItemIcon>
+        <DashboardIcon />
+      </ListItemIcon>
+      <ListItemText primary="Login" />
+    </ListItem>
     <ListItem button component={RouterLink} to="/">
       <ListItemIcon>
         <DashboardIcon />

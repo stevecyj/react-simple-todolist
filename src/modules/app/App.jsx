@@ -23,6 +23,7 @@ import { mainListItems, secondaryListItems } from './listItems.jsx';
 import { TodoList } from '../todo-list';
 import { TicketList, Incidences } from '../ticket-list';
 import { Home } from '../home';
+import { Login } from '../views/Login';
 
 function Copyright() {
   return (
@@ -182,6 +183,9 @@ export default function Dashboard() {
           <Container maxWidth="lg" className={classes.container}>
             <Grid container spacing={3}>
               <Switch>
+                <Route path="/login">
+                  <Login />
+                </Route>
                 <Route path="/incidences">
                   <Incidences />
                 </Route>
